@@ -2,9 +2,10 @@ package main
 
 import (
 	"log"
-	"net/http"
-	"privatphoto/server/internal/http" // Импорт нашего внутреннего пакета
-	"privatphoto/server/internal/storage"
+	nethttp "net/http" // Переименовываем стандартный пакет http чтобы избежать конфликта
+
+	"github.com/PersonalCloudCo/privatphoto/server/internal/http" // Импорт нашего внутреннего пакета
+	"github.com/PersonalCloudCo/privatphoto/server/internal/storage"
 )
 
 func main() {
@@ -15,5 +16,5 @@ func main() {
 
 	// Запускаем сервер
 	log.Println("Server starting on :8080...")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Fatal(nethttp.ListenAndServe(":8080", r))
 }
